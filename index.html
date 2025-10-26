@@ -1,64 +1,386 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Mr H</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Reel Boy — Indie Rock Artist. Listen on TIDAL and discover new music, videos, and shows." />
+    <title>Reel Boy | Official Site</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-dark: #111;
+            --bg-light: #222;
+            --accent: #028391;
+            --text-light: #fff;
+            --text-muted: #aaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-light);
+            background: var(--bg-dark);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(17, 17, 17, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        /* Hero */
+        #hero {
+            height: 100vh;
+            background: url('hero-image.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        #hero h2 {
+            font-size: 4rem;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #024a52;
+        }
+
+        /* About */
+        #about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        #about img {
+            flex: 1;
+            min-width: 300px;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        #about div {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        /* Music */
+        .music-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .track {
+            flex: 1 1 280px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .track img {
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        /* Videos */
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .video-grid iframe {
+            width: 100%;
+            max-width: 400px;
+            height: 225px;
+            border-radius: 6px;
+        }
+
+        /* Shows */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            text-align: left;
+        }
+
+        th {
+            color: var(--accent);
+        }
+
+        /* Merch */
+        .merch-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .item {
+            flex: 1 1 220px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .item img {
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        /* Contact */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        input {
+            border: 1px solid #444;
+            background: #222;
+            color: #fff;
+        }
+
+        button {
+            background: var(--accent);
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #000;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 0 0.8rem;
+            }
+
+            #hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 
-<body style="color:#D989AE; background-color: #f5dfb8; font-weight: bold;">
-    <h1 style="color:#F28B30">Mr H</h1>
-    <h2 style="color:#F28B30">About Me</h2>
-    <ul style="background-color: #96C6D9;">
-        <li>I'm a teacher</li>
-        <li>I teach computer stuff</li>
-        <li>I also teach video</li>
-    </ul>
+<body>
 
-    <h2 style="color:#F28B30">Take one of my classes</h2>
-    <ol style="background-color: #96C6D9;">
-        <li>Computer Science Principles</li>
-        <li>AP Computer Science Principles</li>
-        <li>Computer Systems (Build Computers)</li>
-        <li>Programming 1 (Javascript)</li>
-        <li>Programming 2 (C#)</li>
-        <li>Blah BLah Blah</li>
-        <li>
-            Video Production (This one is the BEST)
-            <ul>
-                <li>Make cool videos</li>
-                <li>Learn to Green Screen</li>
-                <li>Learn about lighting</li>
-                <li>Learn about audio</li>
-                <li>Learn how to use camera settings</li>
-            </ul>
-        </li>
-        <li>Web Development (Make websites, get money)</li>
-        <li>Digital Marketing</li>
-        <li>Game Development (Make Video Games)</li>
-        <li>Robotics (Make Robots do stuff)</li>
-    </ol>
-    <h2 style="color:#F28B30">My Favorite Things</h2>
-    <table style="border:1px solid #D94711; background-color: #96C6D9;">
-        <tr>
-            <th>Color</th>
-            <th>Band</th>
-            <th>Food</th>
-        </tr>
-        <tr>
-            <td>Blueish Greenish</td>
-            <td>Dinosaur Jr</td>
-            <td>Lasagna</td>
-        </tr>
-    </table>
-    <h2 style="color:#F28B30">I Make Music</h2>
-    <img src="images/download.jpg">
-    <h2 style="color:#F28B30">And I make art</h2>
-    <h2 style="color:#F28B30">Also I'm in a band</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Bw9KI2yfEHE?si=QRDD7XYrGGcbG5Ht"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- HEADER -->
+    <header>
+        <h1>REEL BOY</h1>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#music">Music</a>
+            <a href="#videos">Videos</a>
+            <a href="#shows">Shows</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero">
+        <h2>Reel Boy</h2>
+        <p>Bold. Indie. Rock. New single out now.</p>
+        <a class="btn" href="https://tidal.com/artist/30686317/u" target="_blank">Listen on TIDAL</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <img src="images/Profile.jpeg" alt="Reel Boy portrait" />
+        <div>
+            <h2>About Reel Boy</h2>
+            <p>Reel Boy's music is fuzzy, distorted, poppy and melodic. He emerged from the ashes of multiple failed
+                music projects and decided to strike out on his own. His first album "Love Songs" came out in 2023. True
+                to its name, the album is a collection of love letters to multiple entities in his life, including Elvis
+                Castello, Ray Bradbury, childhood memories and the people closest to him. His second album "No Bucket"
+                explores themes of helplessness against the forces of time, anxiety, and falling in love.
+            </p>
+        </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music">
+        <h2>Music</h2>
+        <div class="music-grid">
+            <div class="track">
+                <img src="images/No Bucket EP.png" alt="No Bucket Cover">
+                <h3>No Bucket</h3>
+                <p>Released: 10/24/25</p>
+                <a class="btn" href="https://tidal.com/album/468142396/u" target="_blank">Listen</a>
+            </div>
+            <div class="track">
+                <img src="images/Love Songs Cover.jpg" alt="Love Songs Cover">
+                <h3>Love Songs</h3>
+                <p>Released: 11/15/23</p>
+                <a class="btn" href="https://tidal.com/album/378448643/u" target="_blank">Listen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos">
+        <h2>Videos</h2>
+        <div class="video-grid">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/j9_E89ONpYc?si=7xgiAbrzN7cyfxiE"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/pDQIVc-XPH4?si=sTOoPl8DiqIWdz6z"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- SHOWS -->
+    <section id="shows">
+        <h2>Upcoming Shows</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>City</th>
+                    <th>Venue</th>
+                    <th>Tickets</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dec 5th</td>
+                    <td>Saint George, Ut</td>
+                    <td>Amusement Co.</td>
+                    <td><a href="#" style="color:var(--accent);">Tickets at Door</a></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </section>
+
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Stay Connected</h2>
+        <p>Sign up for updates on new music, shows & exclusive drops.</p>
+        <form action="[newsletter-service-URL]" method="post">
+            <input type="email" name="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        <p>For booking & press inquiries: <a href="mailto:jayson@plaidskeleton.com"
+                style="color:var(--accent);">jayson@plaidskeleton.com</a></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Reel Boy — All Rights Reserved</p>
+        <div>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">TIDAL</a>
+        </div>
+    </footer>
+
 </body>
-
 
 </html>
