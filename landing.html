@@ -239,15 +239,6 @@
             }
         }
 
-        /* tiny tweak for svg/logos – we use fontawesome or simple placeholders? 
-           but we'll keep it generic: use colored circles with names, but the request says "create a second webpage that keeps this theme" 
-           and "links to Spotify, Tidal, Apple Music, Deezer, iHeart Radio and Amazon Music (I can fill in the links)".
-           so i'll use clean icons via box icons (emoji fallback) or simple images. 
-           but to keep it lightweight i'll use simple platform names with styled divs + awesome font? no external font, just css.
-           but better use small vector-like images: we can use font-awesome? the main site doesn't use it, i'll keep it self-contained.
-           just use nice background-color + logo letter. Or i can embed simple data-uri svg? i'll use text + color because it's safe.
-           but for better visual, let's make each card with a big initial and brand color.
-        */
 
         /* redesign cards to be minimal but with brand color accent */
         .platform-card .icon {
@@ -261,8 +252,7 @@
             justify-content: center;
             font-size: 2rem;
             font-weight: bold;
-            color: white;
-            border: 2px solid var(--accent);
+
         }
 
 
