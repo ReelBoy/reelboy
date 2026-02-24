@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Reel Boy — Listen on all major platforms: Spotify, TIDAL, Apple Music, Deezer, iHeartRadio, Amazon Music." />
+    <title>Reel Boy | Listen</title>
+
+    <!-- same fonts & base style from the main site -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --bg-dark: #111;
+            --bg-light: #222;
+            --accent: #028391;
+            --text-light: #fff;
+            --text-muted: #aaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-light);
+            background: var(--bg-dark);
+            line-height: 1.5;
+        }
+
+        /* small header matching main site – keeps the brand */
+        .mini-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            z-index: 100;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .mini-header .logo {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .mini-header nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .mini-header nav a:hover {
+            color: var(--accent);
+        }
+
+        /* main container – landing content */
+        .landing {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-listen {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-listen h1 {
+            font-size: 4rem;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent);
+            text-shadow: 0 2px 10px rgba(2, 131, 145, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .hero-listen p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+
+        /* platform grid – exactly what was requested */
+        .platform-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 40px 0 50px;
+            width: 100%;
+        }
+
+        .platform-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            flex: 1 1 160px;
+            max-width: 200px;
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            border: 1px solid #333;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 30px rgba(0,0,0,0.8);
+            border-color: var(--accent);
+        }
+
+        .platform-card img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            filter: brightness(1) contrast(1.1);
+        }
+
+        .platform-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.1s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-link:hover {
+            background: #036b77;
+        }
+
+        /* small reminder text (links to be filled) */
+        .placeholder-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: #1e1e1e;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0 auto 30px;
+            border: 1px dashed #444;
+        }
+
+        /* back to main site link */
+        .back-link {
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .back-link a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* footer same vibe as original */
+        .footer-small {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #0a0a0a;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        .footer-small a {
+            color: #ccc;
+            margin: 0 0.8rem;
+            text-decoration: none;
+        }
+
+        .footer-small a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 700px) {
+            .mini-header {
+                padding: 0.8rem 1rem;
+            }
+            .mini-header nav a {
+                margin-left: 1rem;
+                font-size: 0.85rem;
+            }
+            .hero-listen h1 {
+                font-size: 2.8rem;
+            }
+            .platform-card {
+                max-width: 160px;
+                padding: 1.5rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .platform-grid {
+                gap: 15px;
+            }
+            .platform-card {
+                flex: 1 1 130px;
+                max-width: 140px;
+            }
+        }
+
+        /* tiny tweak for svg/logos – we use fontawesome or simple placeholders? 
+           but we'll keep it generic: use colored circles with names, but the request says "create a second webpage that keeps this theme" 
+           and "links to Spotify, Tidal, Apple Music, Deezer, iHeart Radio and Amazon Music (I can fill in the links)".
+           so i'll use clean icons via box icons (emoji fallback) or simple images. 
+           but to keep it lightweight i'll use simple platform names with styled divs + awesome font? no external font, just css.
+           but better use small vector-like images: we can use font-awesome? the main site doesn't use it, i'll keep it self-contained.
+           just use nice background-color + logo letter. Or i can embed simple data-uri svg? i'll use text + color because it's safe.
+           but for better visual, let's make each card with a big initial and brand color.
+        */
+
+        /* redesign cards to be minimal but with brand color accent */
+        .platform-card .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #1e1e1e;
+            margin: 0 auto 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            border: 2px solid var(--accent);
+        }
+
+        /* specific brand colors for each icon (optional) */
+        .platform-card.spotify .icon { background: #1DB954; border-color: #1DB954; color: black; }
+        .platform-card.tidal .icon { background: #000000; border-color: #ffffff; color: #fff; }
+        .platform-card.apple .icon { background: #fc3c44; border-color: #fc3c44; }
+        .platform-card.deezer .icon { background: #A238FF; border-color: #A238FF; }
+        .platform-card.iheart .icon { background: #C62244; border-color: #C62244; }
+        .platform-card.amazon .icon { background: #FF9900; border-color: #FF9900; color: #000; }
+
+        /* adjust card style */
+        .platform-card h3 {
+            margin: 0.2rem 0 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-link {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.4rem 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .btn-link:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- consistent header (minimal, same vibe) -->
+    <div class="mini-header">
+        <a href="#" class="logo">REEL BOY</a>
+        <nav>
+            <a href="#" target="_blank">Home</a>      <!-- relative links would be replaced, but we keep placeholder -->
+            <a href="#" target="_blank">Music</a>
+            <a href="#" target="_blank">Shows</a>
+        </nav>
+    </div>
+
+    <main class="landing">
+        <div class="hero-listen">
+            <h1>LISTEN</h1>
+            <p>Reel Boy is everywhere. Pick your favorite platform.</p>
+        </div>
+
+        <!-- subtle placeholder reminder – you can fill in the real links later -->
+        <div class="placeholder-note">
+            ⚡ you can fill in the actual links ⚡
+        </div>
+
+        <!-- platform grid – exactly Spotify, Tidal, Apple Music, Deezer, iHeart Radio, Amazon Music -->
+        <div class="platform-grid">
+            
+            <!-- Spotify -->
+            <div class="platform-card spotify">
+                <div class="icon">♫</div>
+                <h3>Spotify</h3>
+                <a href="#" class="btn-link" target="_blank" rel="noopener">LISTEN</a>
+                <!-- placeholder link, you'll replace href= with actual Spotify URL -->
+            </div>
+
+            <!-- TIDAL -->
+            <div class="platform-card tidal">
+                <div class="icon">🌊</div>
+                <h3>TIDAL</h3>
+                <a href="#" class="btn-link" target="_blank" rel="noopener">LISTEN</a>
+            </div>
+
+            <!-- Apple Music -->
+            <div class="platform-card apple">
+                <div class="icon">🍎</div>
+                <h3>Apple Music</h3>
+                <a href="#" class="btn-link" target="_blank" rel="noopener">LISTEN</a>
+            </div>
+
+            <!-- Deezer -->
+            <div class="platform-card deezer">
+                <div class="icon">Ｄ</div>
+                <h3>Deezer</h3>
+                <a href="#" class="btn-link" target="_blank" rel="noopener">LISTEN</a>
+            </div>
+
+            <!-- iHeart Radio -->
+            <div class="platform-card iheart">
+                <div class="icon">❤️</div>
+                <h3>iHeartRadio</h3>
+                <a href="#" class="btn-link" target="_blank" rel="noopener">LISTEN</a>
+            </div>
+
+            <!-- Amazon Music -->
+            <div class="platform-card amazon">
+                <div class="icon">🅰️</div>
+                <h3>Amazon Music</h3>
+                <a href="#" class="btn-link" target="_blank" rel="noopener">LISTEN</a>
+            </div>
+        </div>
+
+        <!-- extra helpful text (matches theme) -->
+        <p style="color:#aaa; max-width:600px; margin: 20px auto; text-align:center; font-style:italic;">
+            New album “No Bucket” out now. Click any service to hear the fuzz.
+        </p>
+
+        <!-- link back to the original site (like official homepage) -->
+        <div class="back-link">
+            <a href="#">← back to official site</a>   <!-- you'd point to reelboy.com -->
+        </div>
+    </main>
+
+    <!-- small footer (matches original) -->
+    <footer class="footer-small">
+        <p>© 2025 Reel Boy — All Rights Reserved</p>
+        <div>
+            <a href="#">Instagram</a> |
+            <a href="#">YouTube</a> |
+            <a href="#">TIDAL</a>
+        </div>
+    </footer>
+
+    <!-- note: the placeholder links (#) are ready to be replaced with real URLs as mentioned -->
+</body>
+</html>
